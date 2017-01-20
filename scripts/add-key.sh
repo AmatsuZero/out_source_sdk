@@ -12,4 +12,4 @@ mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
 cp ./scripts/profile/$PROFILE_NAME.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
 
 security find-identity -p codesigning ~/Library/Keychains/ios-build.keychain
-security list-Keychains
+security list-keychains
