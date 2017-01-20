@@ -1,22 +1,30 @@
 language: objective-c
-osx_image: xcode8.2
+osx_image: xcode7.3
 xcode_project: Demo/Demo.xcodeproj
 xcode_scheme: Demo
+before_install:
+- gem install fir-cli --no-ri --no-rdoc
 before_script:
-- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/ForSDKTest.mobileprovision.enc -d -a -out scripts/profile/ForSDKTest.mobileprovision
-- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.cer.enc -d -a -out scripts/certs/dist.cer
-- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a -out scripts/certs/dist.p12
-- ./scripts/add-key.sh
-- ./scripts/update-bundle.sh
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/ForSDKTest.mobileprovision.enc
+  -d -a -out scripts/profile/ForSDKTest.mobileprovision
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.cer.enc -d -a
+  -out scripts/certs/dist.cer
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a
+  -out scripts/certs/dist.p12
+- "./scripts/add-key.sh"
+- "./scripts/update-bundle.sh"
 script:
-- xcodebuild -workspace IntegratedSDK.xcworkspace -scheme Demo -sdk iphonesimulator
-  ONLY_ACTIVE_ARCH=NO
+- xctool -workspace IntegratedSDK.xcworkspace -scheme Demo -sdk iphones -configuratiion
+  Release
 after_script:
-- ./scripts/remove-key.sh
+- "./scripts/remove-key.sh"
 after_success:
-- ./scripts/sign-and-upload.sh
+- "./scripts/sign-and-upload.sh"
 env:
   global:
   - PROFILE_NAME="ForSDKTest"
   - secure: GuqIkgvwuxke3qt1BJdKtLeu7QgNi3j7ssBlFNdo5htUIB6mlWulzPJ0R+w6gJ0SZaBkrJ8JexaLPu3DpswD6t4im32ZjVSEO4GYph5B1U1TcPQVgz8z68ibzy++8ajQXJenNGsgep8IZoIYl/Vjj9iqfPasIp+eJdnuuAdesb3N4M2ULXIRBr4AINZHTofnPk6h56fq12bPjBwYqBvaNTPjVYfbSYZKhLtWzF2yzGqpn/8d+XFTHh3MVXbnrtVxwGdMsXCYSUDhAHEkcRAAIzZt8nPx8Ifoyq99sO910T3ehPGhm4bqXphuHie6atu9Dyua8SWeoERts7uL74zHZmieLMRw5Pc80KmW7gfzejJCYHUn1cNQztxpPEYXPohsv8p5+OhagkCLS+FBjpwq9/WkhmZAuEigA/YNMCItT0yMRL2TSTfXT/UM5GLnqlj3C2knJyPmFwHGf8DJtkUzuVfjSVV8G+cg3ZtMuB5a/XhNyA3lNcdVbbejoM9nNfZzQo4jHsbhcCFi7QFbtzVrxFU0PEoD4hUs85uuCKXNP/THvwSC3dmVoBlunO7qJXq97G/8Gdvo0nFhRgzegXb+W2JkAyzf5SZjGhJBxytMcVE65GHEKjh5dxIQEpomnGlYpKUKSir5jdepPjWs87nwIh9+VK+cMn15ElnF3c0EdFg=
   - secure: Ie7+k+cjwWzl6OXGgIKcCs0rpunhQf8yIJHHXeJfhFa+aLVD2fkHAi/YyBFz8HIdHycPj5gp4RBydnzHuFO8HP2HykgFfd3byrNcYm28XRHUaPgWTO4DsBNZoutAo/vSWe5S5Iem029Sp95gurO1xOqqIYILOrcG8X5FXpmc+VIXNUVH4Ogzh/VTvQ0SCTAYFW+Z0DhfTyEa/qulfag19NUa6jK2KScjE8GZKaHx65Y/Bg51ES6NRs1WBg7C6StA7/MVtqRpFo+AqfKjBynWblPBNCNgUuL9yi1XnA+naFcI165vjVjNInNuOjIJ0gz25GIzBwB07tUbxcEJ1Hj3VH+dG+5kpXwHSzJnOLFAIW9YHFRs3iv8+N1x8M1gdGLroK8y9nRQZXa95Ef0P4mWwfB3AR7bKp2e2SKUyOwk+3C0gAV2/+DfQDR/HtIcyVydXK8WOM1SSabGDBcEzcvVFRIDBZ1eBFDa3dXpGYeZ4TdFthMZ1qziJ/K4NGcaFde9bM2XrHK3FW+VCfkGdVEpmIOkENUxVOVG0o3W3+xKFbAx2UMKHmx+XXEIVFm25HUwN82cFy2cBl19sD2BOvHHoQHNn5sTx4+qIVfhqwW3Hw1P3iGo8JQuTNIYorEmtWmwIwLf9bfYroGjZzk+Cs0BITa3hRC952M3M7NJA+onacI=
+  - secure: X4SsdqwLZORxSkzCX96RUhAqcKa8gzHxSKRdT6+gYYxiIDZkcCwNaoSACUEwPjR9Skk9VvTWimnutUaH2D+JdlxsTE9JggmnwJuFxxpOAgHqq3EPEKM+IkE/zoARVlQyUQSzTAndQgHDZfjnKDfzfxLW6Mf04p+1k0gtfLXvIt9ZYMy8P4sdaYukdB3Nbh7PJntkdoHLZXu0Q0WVDkITmZbeBIJcbXJswIj7kURXz/iZBtQ3PZKZ2zFpviOf9EJmiqQfCqVtIzT44ah9MQ3SX2yVh3fwRPj681yqJU5rc8HUvYYf1fwa095x6yuyborHzaPVE0CInR1e1xkDe8PmQMZWFq2YG+Dt573QPOK8JIFYI6+EjQyx2hfdo8fTGlpTB1kRSk1P+CluRya0vOX/QK0Xr2Nx1yRm5yV5cKuBytaJLI/+KtFko+7X24M96DkuLjqsFzLAk3HmBCoyVc2ZRcqHJJUkMe/Rj+7CavVsYn0qbBKJTuQ/clCkxYE3lJZ8IQ0DcNalLfZkRuUJfwVc9e3Lx35+OuJadWgJY0cKFGWB/9UTTbdxX7dgYD4FN3rP/j/bwEKq38S5O5tScR7DDAehF/gMHWrwUAHWUaHPvAiI56CsXR69EJdE0gJuyC2dnIWLlMRjV0RbE3Ds7N/gzjS/qP+5j4RdPfUJ4WAeOQs=
+  - secure: fuHZKXkMgS4YGFsnCGCWffsJGelNJXM5BAD6TkYabHHexrLa1sQaMbuwiLYJeWRL+2nrVY7NIOJforp9ZO5NmU/GKsyRNxqYNj0cT8Xf8wbeZ+jTJieQ4Fr7K4U7pVUlm/jE1txX5e/29GY1f0aSBCSMzVozgOceCRoB3wW3ryqtaSNLgzb3QnV4H/ZrT9Wvy7bpu3Dl5h3x4ROlfLsn4RyRm5+337yGjJMgNMdcsgywkLi9ucqsGlOEpCCYhsUYyrBnjxwacPZdmLC8pozuGxeigOWer5eS9KbJAsHn1Bmbkj29trs0+EuG0+5ZCkwUW9ku6/YhQ+baizd7AsRP8u+3nmEGJvh1q6oHJxoDPW1Zlu68OTdHSmuih2/e+iM/SHvks0/djYWnx27v0fyivSNj5JtSU10aWmGlCltak1kgY/4U2j0ZSq17pI1G2Uz9xUv2kVeqt+W/u1nE/UpHTmpI58nkLFezDHKAkUNUDj9oVZe7i0ZJCg1K4kFmmvvFyp0aKmqPY5kXBqvmp7zz4xCuZ3YzDQRnYHVA1GLC5DfrCALVur+YI4yXWsr5VkVNRMLE+RuLKJWrfmXug59mfcxigngZLEKsmbAgP1fnrvXfLMgcEJQa+0932tpvWArT5bRsdsSHII4ZGGFvnF1C5fHCJXnp14isu1cRfgzJbUs=
+  - secure: COdDQyBJxvMfnm/wpD6NCeFiD53Q0LNDrx/aMaBhiQcJx7bpR0003HYxe4WKxhO8vopZ56X7HhVkipzUmsZyuSJ6BmrfM8VFYAakmDPCMpAbpAFl+0BdmOvvi357M4FPrQjijf4ZHgNrZd49HiVEfXRhSLyuWLMDCkHCuj002VwlGZtRWCxQT/hEU1/hSdHTyJx8QI3fy7Z4xO+OQaIDaab4MtXVuGCIyYuYkbVMNixTy3RZXYSbG7BmWTk/5tReegZsmx/YtZUSc45jlW159fjXZXl6MrkNl0LkUw4rofLSrC64Ejqi9MoQy/nJs7guz5k/Hbf1obovOzQDlMfvosTbvSeG5ZlHlfiOkuPsl9d++boYPluHVBD9JOtgaJePH/xj5I7BaxV8hKzEITWu0BISfgBIuAohZDXa1ptBdaHg/Ye+37Pgo2Ri9Korcg4ALLIap7xzapOedFzW9TNWHmJk/mfOeh56otxUWX9Q1nGZRw6ukffgGqoASdjbKd8XgUqJu516uHYUAUUETN25f4y9c/chTOo2yQcWzjb7Rq2gVkd+FwcmkUdEHP8zYQtL8jx7xDU90C2mfTtBbpBQ+unQM3+hlffkdIeDiPzBHLTzdZEkiutco3uSgQ57eqIGdpW2R+dHUskCPGPC+gLPgSun1lc9qlgbi/GfHkCveKs=
