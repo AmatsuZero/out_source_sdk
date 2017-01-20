@@ -123,13 +123,12 @@ typedef enum : NSUInteger {
  
  @param appID appID : @"j0g2phg7"
  @param adslotId 广告位ID ： @"vfjxinne"
- @param adslotSize 广告尺寸
  @param success 成功回调
  @param failure 失败回调
  */
 - (void)requestAdsWithAppID:(NSString *)appID
                    adslotId:(NSString *)adslotId
-                    adCount:(NSUInteger)adCount
+                    adCount:(int)adCount
          enableOptimazation:(BOOL)enableOptimazation
                     success:(void (^)(id responseData, BOOL isEnabled, NSString* vid))success
                     failure:(void (^)(NSError *error))failure;

@@ -120,7 +120,7 @@ typedef enum _AdslotSize {
 
 + (SXLCVersion*)apiVersion;
 + (SXLCDevice*)device;
-+ (SXLCAdSlot*)adslotWithID:(NSString *)adslotID size:(AdslotSize)type adCount:(NSUInteger)adCount;
++ (SXLCAdSlot*)adslotWithID:(NSString *)adslotID size:(int)type adCount:(int)adCount;
 + (SXLCNetwork*)network;
 + (SXLCGps*)gps;
 
@@ -155,7 +155,7 @@ typedef enum _AdslotSize {
 
 - (void)requestAdsWithAppID:(NSString *)appID
                    adslotId:(NSString *)adslotId
-                    adCount:(NSUInteger)adCount
+                    adCount:(int)adCount
          enableOptimazation:(BOOL)enableOptimazation
                     success:(void (^)(id responseData, BOOL isEnabled, NSString* vid))success
                     failure:(void (^)(NSError *error))failure
@@ -175,15 +175,14 @@ typedef enum _AdslotSize {
     
     NSURL* url= nil;
 #ifdef DEBUG
-    url = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:kTestServerURL]];
+    url = [NSURL URLWithString:kTestServerURL];
 #else
-    url = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:kOnLineServerURL]];
+    url = [NSURL URLWithString:kOnLineServerURL];
 #endif
     
-    NSMutableURLRequest* req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:kTestServerURL]];
+    NSMutableURLRequest* req = [NSMutableURLRequest requestWithURL:url];
     req.HTTPMethod = @"POST";
     req.HTTPBody = requestData;
-    NSOperationQueue* queue = [NSOperationQueue new];
     
     NSURLSessionDataTask* getConfigurationTask = [self.requestSession dataTaskWithRequest:req completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         SXReferenceSDK* sdk = nil;
@@ -284,7 +283,7 @@ typedef enum _AdslotSize {
     return app;
 }
 
-+ (SXLCAdSlot*)adslotWithID:(NSString *)adslotID size:(AdslotSize)type adCount:(NSUInteger)adCount
++ (SXLCAdSlot*)adslotWithID:(NSString *)adslotID size:(int)type adCount:(int)adCount
 {
     SXLCAdSlot *adslot = [[SXLCAdSlot alloc] init];
     
@@ -388,11 +387,11 @@ typedef enum _AdslotSize {
     NSString* name = info.subscriberCellularProvider.carrierName;
     if (!name) {
         type = SXLCNetwork_OperatorType_UnknownOperator;
-    } else if (name == @"中国移动") {
+    } else if ([name  isEqual: @"中国移动"]) {
         type = SXLCNetwork_OperatorType_ChinaMobile;
-    } else if (name == @"中国联通") {
+    } else if ([name  isEqual: @"中国联通"]) {
         type = SXLCNetwork_OperatorType_ChinaUnicom;
-    } else if (name == @"中国电信") {
+    } else if ([name  isEqual: @"中国电信"]) {
         type = SXLCNetwork_OperatorType_ChinaTelecom;
     } else {
         type = SXLCNetwork_OperatorType_OtherOperator;
