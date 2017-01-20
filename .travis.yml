@@ -14,7 +14,7 @@ before_script:
 - "./scripts/add-key.sh"
 - "./scripts/update-bundle.sh"
 script:
-- xctool -workspace IntegratedSDK.xcworkspace -scheme Demo -sdk iphones -configuratiion
+- xctool -workspace IntegratedSDK.xcworkspace -scheme Demo -sdk iphones -configuration
   Release
 after_script:
 - "./scripts/remove-key.sh"
