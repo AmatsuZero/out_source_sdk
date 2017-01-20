@@ -2,21 +2,3 @@ language: objective-c
 osx_image: xcode7.2
 xcode_project: Demo/Demo.xcodeproj
 xcode_scheme: Demo
-before_script:
-- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/ForSDKTest.mobileprovision.enc -d -a -out scripts/profile/ForSDKTest.mobileprovision
-- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.cer.enc -d -a -out scripts/certs/dist.cer
-- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a -out scripts/certs/dist.p12
-- ./scripts/add-key.sh
-script:
-- xctool -workspace IntegratedSDK.xcworkspace -scheme Demo -sdk iphoneos -configuration Release OBJROOT=$PWD/build SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO
-after_success:
-- ./scripts/sign-and-upload.sh
-after_script:
-- ./scripts/remove-key.sh
-env:
-  global:
-  - APP_NAME="Demo"
-  - 'DEVELOPER_NAME="iPhone Developer: 振华 姜 (Y7923KUQX4)"
-  - PROFILE_NAME="ForSDKTest"
-  - secure: c9uJpdlhmWYAzsNWoQiffA0EhBAF8OiVKQgphd5wRuTL6FT0Oa8ExuBeoZsJMOfmImVRTt6vsyak66wDnKn1h5Z+TfFhONEw/p8yga0pg4xl5ybCJ23gUF0o38s9nvi0JGPv22C3XbcAC90vXAfoctuAFs1P45vjFYNQ+l1iE6Kt0ORecadb2ZFMdsPrROPTxahg2OqIonHzz6h4nmtqcnfzD+U/6GKvOFglCfwZxbDNsgmRzQwHdeGoUf7P9ngs8RE0qsflbxXdi0Z9/Ig7JXXjKVV80vvmwtiTCnDEgDjL5c6NrubNEhqhlqlP3pPK2WLD9a3mCrTn2TlHrqm+chHbEx0wSkTNVAXMbBZ8cVI/SdwnMvTJowraYLZo8NR8wIFszcAvyw0X3+2+DGNObCnK4QPzb4Nt6mNaD0iCRYusqfja93uD5IlZYSeKUia/6Vro74Sj8Oh8UAB+VH4faBu1dz4LC+JoAO6D44W7AfSOeFeJtNiIpHOxak+t9/uT4qHjrfEnLRA2ne0mdkZsbDyun4GK6Bw2tT5VrBh7gfcWt9vevr3EukzH1z+1t90Eq1yPBnU/AvQ8fczVuan/QiojcKSIWRwkxhVRcZAn0M0MMwOBPmVZoTLDLWatI2mnNd9bgnODWSr+hTcyoMcdufws/vgqFTD8qgWVMrN2hyo=
-  - secure: FsHIJka3CccgcPLPetuS/PIClchZzXxzuAIrey24Nj+TAAAlmPmHBB0QfXjvoXpkGLKvYS/zrad0z3w6LOtPNBeXXaDWi2D8h+oM9TPcyVRoQo6L9nLhGgwatc5jjs5ronfm8AFGKNKKxatiRjPp+5Gakn/zvz+XQXitj1kvF6HZgYHXTNfYFGX0Z3QrRWhu9Exmcf4z/JtftlJZZY94bITN9ERllFWdKt7vQODVe3ttdpVAnihBBdtfDlrMPD/GEMXRFVznIT5drT6R8GoCccnPwZLrkGAtcexlFXrQuBXVRmkuTq4uWoQ3FD/AwIupCtGeet7QoPb0ILX3hOOOzZwE6QpWYLuDwLDrHvyTm7jdyJfmsM86JsqxE7pXmNvjep9dxvVpW/2a/aFnBKwnPkQhgRCj1hRztSHqbatt1M7mo8XJDX+DyO3bCd4RoJPuGkUCGnbpnk6Tbe9a3umenD61fYPg7ZwH9e36HT5pmaDLB0AYP/TPU++BLJ6LZqWjZrNV26FhYQBU1cpb6BZUrWaqk6w12FP51nYs3lBjCvVb7RIDtaN1+U8Kngl8XvkUss0h6xUBVgwvA37QSK2BtqusPmzUG0EpNH5kBeFwqg0q3tyYErbRea/9B9RCxEmLakiXYwtUHilabQ4tgIXgDbLIQi+AfPyxgPmpMMEktsQ=
