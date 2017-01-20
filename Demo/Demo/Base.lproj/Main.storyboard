@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="这里是控制台显示" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lee-42-oFt">
+                                <rect key="frame" x="0.0" y="220" width="375" height="447"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="447" id="aCO-6g-iZB"/>
+                                </constraints>
+                                <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2e-tu-n7B">
+                                <rect key="frame" x="156" y="90" width="63" height="30"/>
+                                <state key="normal" title="播放广告"/>
+                                <connections>
+                                    <action selector="playayang:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yb6-NG-4O2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="lee-42-oFt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="04m-TN-zeK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="T2e-tu-n7B" secondAttribute="trailing" constant="140" id="9Ia-N4-LO8"/>
+                            <constraint firstItem="T2e-tu-n7B" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="140" id="EtN-Xy-RDH"/>
+                            <constraint firstItem="T2e-tu-n7B" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Qvh-En-TCz"/>
+                            <constraint firstItem="T2e-tu-n7B" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="70" id="UvL-m2-kRd"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lee-42-oFt" secondAttribute="bottom" id="VdO-ck-dHd"/>
+                            <constraint firstItem="lee-42-oFt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ayS-Xr-ugl"/>
+                            <constraint firstAttribute="trailing" secondItem="lee-42-oFt" secondAttribute="trailing" id="wvk-x0-NnW"/>
+                            <constraint firstItem="lee-42-oFt" firstAttribute="top" secondItem="T2e-tu-n7B" secondAttribute="bottom" constant="100" id="y7d-yy-yy6"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="ayang" destination="T2e-tu-n7B" id="4Gs-WY-jDx"/>
+                        <outlet property="console" destination="lee-42-oFt" id="OW0-sb-NjS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-264.80000000000001" y="-74.212893553223395"/>
+        </scene>
+    </scenes>
+</document>

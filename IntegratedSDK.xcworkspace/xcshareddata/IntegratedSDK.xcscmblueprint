@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "B12F3B0265FF21E6009700F81C9D18DEA024A11E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "727180587CE2B7912DE46926BA79949669716243" : 9223372036854775807,
+    "B12F3B0265FF21E6009700F81C9D18DEA024A11E" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "54F46323-E228-48BD-8106-0508597AC73B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "727180587CE2B7912DE46926BA79949669716243" : "out_source_sdk\/Demo\/",
+    "B12F3B0265FF21E6009700F81C9D18DEA024A11E" : "out_source_sdk\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "IntegratedSDK",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "IntegratedSDK.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/AmatsuZero\/AdsSDK.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "727180587CE2B7912DE46926BA79949669716243"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/AmatsuZero\/AdsSDK.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B12F3B0265FF21E6009700F81C9D18DEA024A11E"
+    }
+  ]
+}
