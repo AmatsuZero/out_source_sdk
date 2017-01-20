@@ -1,4 +1,8 @@
 language: objective-c
 osx_image: xcode8.2
-script: 
-- xcodebuild -workspace IntegratedSDK.xcworkspace -scheme Demo -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+script:
+- xcodebuild -workspace IntegratedSDK.xcworkspace -scheme Demo -sdk iphonesimulator
+  ONLY_ACTIVE_ARCH=NO
+env:
+  global:
+    secure: D17WM5fjeFgD//epCffT36BpFsDKDNox/3l3pVVwyuvaIKBm+2ZA9ON1rN2P5tAHRvUrNkIOZIluwiCrE6XQscY/jeBJ5J/tgeLyXbWHd2q/xEuYNJJbjT9KR202i7rM3uDZurch9Tu0o2db38vXLdCDZ1WCs5QxuqCC50Cp3eE2tNs4qFNU+AEyAY5qWsFUtqRGqVeJYaEjwPnWAXxk7RrYmbufStsk9cUyT8+calHnkcN87DSBbyTGshBtIV9PPb4dXZuwHyVEshOqnbEWIr5nq0rYAPWoirHslC7kRNJij1nLBz3b6goKt13apFtNcy+xAJdSe+pJfoXdDysRqrEp2bpZ5vwMNT2khNjGkgY9CPvwFUVFc2J9G+SLyEQhP95pdwK/+8tGG+WM/74jNQadBpL3BhbZ97JA1fvLzUuIkJoj5EUkrdT0lmubLOnsanrIajw0jwhAwLWoicPfusNS5b/rUicoeMD4p386wYALRb0wD/COAWzAqCA0CYrvG27ou+SUq8NSdzdPE0nTv1Afi/3qClwNFU+bbU9wVKoxYaObibc3eRhGeUp3aLZq+2Z7esPMOWpla+P7YovqQYySUcloO2bxuo5I66tH9rRy4abH7UlH2VGjcA6h1Rmd5gu/aF9VXILTTQekQxESSCRlgAJCBSlR10c9Ep/or6g=
