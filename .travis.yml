@@ -2,9 +2,19 @@ language: objective-c
 osx_image: xcode8.2
 xcode_project: Demo/Demo.xcodeproj
 xcode_scheme: Demo
+before_script:
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/ForSDKTest.mobileprovision.enc -d -a -out scripts/profile/ForSDKTest.mobileprovision
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.cer.enc -d -a -out scripts/certs/dist.cer
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a -out scripts/certs/dist.p12
+- ./scripts/add-key.sh
+- ./scripts/update-bundle.sh
 script:
 - xcodebuild -workspace IntegratedSDK.xcworkspace -scheme Demo -sdk iphonesimulator
   ONLY_ACTIVE_ARCH=NO
+after_script:
+- ./scripts/remove-key.sh
+after_success:
+- ./scripts/sign-and-upload.sh
 env:
   global:
   - secure: GuqIkgvwuxke3qt1BJdKtLeu7QgNi3j7ssBlFNdo5htUIB6mlWulzPJ0R+w6gJ0SZaBkrJ8JexaLPu3DpswD6t4im32ZjVSEO4GYph5B1U1TcPQVgz8z68ibzy++8ajQXJenNGsgep8IZoIYl/Vjj9iqfPasIp+eJdnuuAdesb3N4M2ULXIRBr4AINZHTofnPk6h56fq12bPjBwYqBvaNTPjVYfbSYZKhLtWzF2yzGqpn/8d+XFTHh3MVXbnrtVxwGdMsXCYSUDhAHEkcRAAIzZt8nPx8Ifoyq99sO910T3ehPGhm4bqXphuHie6atu9Dyua8SWeoERts7uL74zHZmieLMRw5Pc80KmW7gfzejJCYHUn1cNQztxpPEYXPohsv8p5+OhagkCLS+FBjpwq9/WkhmZAuEigA/YNMCItT0yMRL2TSTfXT/UM5GLnqlj3C2knJyPmFwHGf8DJtkUzuVfjSVV8G+cg3ZtMuB5a/XhNyA3lNcdVbbejoM9nNfZzQo4jHsbhcCFi7QFbtzVrxFU0PEoD4hUs85uuCKXNP/THvwSC3dmVoBlunO7qJXq97G/8Gdvo0nFhRgzegXb+W2JkAyzf5SZjGhJBxytMcVE65GHEKjh5dxIQEpomnGlYpKUKSir5jdepPjWs87nwIh9+VK+cMn15ElnF3c0EdFg=
