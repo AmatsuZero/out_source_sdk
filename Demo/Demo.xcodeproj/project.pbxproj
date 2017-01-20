@@ -372,7 +372,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Si Xiang Lian Chuang Network Technology Co., Ltd (FS4G5542ZM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Si Xiang Lian Chuang Network Technology Co., Ltd (FS4G5542ZM)";
 				DEVELOPMENT_TEAM = FS4G5542ZM;
 				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = "$(SCROOT)/";
@@ -393,7 +394,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Si Xiang Lian Chuang Network Technology Co., Ltd (FS4G5542ZM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Si Xiang Lian Chuang Network Technology Co., Ltd (FS4G5542ZM)";
 				DEVELOPMENT_TEAM = FS4G5542ZM;
 				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = "$(SCROOT)/";
