@@ -204,7 +204,7 @@
 					802A32371E1113540039402F = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = FS4G5542ZM;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -373,7 +373,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Si Xiang Lian Chuang Network Technology Co., Ltd (FS4G5542ZM)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Si Xiang Lian Chuang Network Technology Co., Ltd (FS4G5542ZM)";
 				DEVELOPMENT_TEAM = FS4G5542ZM;
 				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = "$(SCROOT)/";
@@ -384,8 +384,8 @@
 				OTHER_LIBTOOLFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sixianglianchuang.Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1233eccb-fbd6-46ff-8cb4-1ead44c12962";
-				PROVISIONING_PROFILE_SPECIFIER = ForSDKTest;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = NO;
 			};
 			name = Debug;
@@ -395,7 +395,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Si Xiang Lian Chuang Network Technology Co., Ltd (FS4G5542ZM)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Si Xiang Lian Chuang Network Technology Co., Ltd (FS4G5542ZM)";
 				DEVELOPMENT_TEAM = FS4G5542ZM;
 				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = "$(SCROOT)/";
@@ -406,8 +406,8 @@
 				OTHER_LIBTOOLFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sixianglianchuang.Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1233eccb-fbd6-46ff-8cb4-1ead44c12962";
-				PROVISIONING_PROFILE_SPECIFIER = ForSDKTest;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = NO;
 			};
 			name = Release;
