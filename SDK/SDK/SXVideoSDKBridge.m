@@ -18,7 +18,7 @@
 #import "SXVideoAd.h"
 #import "SXRequestUtil.h"
 
-static NSErrorDomain const errorDomain = @"com.sixianglianchuang.integratedsdk";
+static NSString* const errorDomain = @"com.sixianglianchuang.integratedsdk";//NSErrorDomain是iOS 10以后才出现的tyle alias
 
 static NSString* playfailednotification = @"playfailed";
 
@@ -236,8 +236,6 @@ static NSDate* playDate = nil;
     
     self.successCount.successCount += ([UnityAds isReady] ? 1 : 0);
     self.successCount.isUnityAdsReady = [UnityAds isReady];
-    static dispatch_once_t onceToken;
- 
     if (![UnityAds isReady]) {
         [self uploadErrorStatics:SXAdvertiseNoCaheData message:@"广告缓存失败" SDKType:SXSDKTypeUnity event:UpLoadEventOtherEvents];
     }

@@ -37,7 +37,7 @@ typedef NS_ENUM(NSUInteger, KSCRewardVideoAdCacheStatus) {
 
 /**
  *  @brief 广告缓存状态回调
- *  @brief isFinished返回YES时，才可调用-displayAd:error:
+ *  @discuss isFinished 返回YES时，才可调用-displayAd:error:
  *
  *  @param isFinished   缓存状态
  *  @param error        错误原因
@@ -51,7 +51,7 @@ typedef NS_ENUM(NSUInteger, KSCRewardVideoAdCacheStatus) {
 
 /**
  *  @brief 广告视频关闭
- *  @brief 用户取消观看或播放完成都会调用该方法
+ *  @discuss 用户取消观看或播放完成都会调用该方法
  *
  *  @param durationTimes 广告播放时长,单位毫秒
  *  @param status        关闭方式：强制关闭/广告播放后自动关闭
@@ -91,7 +91,7 @@ typedef NS_ENUM(NSUInteger, KSCRewardVideoAdCacheStatus) {
 /**
  *  播放广告
  *
- *  @param rootViewController
+ *  @param rootViewController 父控制器
  */
 - (void)displayAd:(UIViewController *)rootViewController;
 
